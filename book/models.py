@@ -34,7 +34,8 @@ class Customer(models.Model):
 class Cart(models.Model):
     customer = models.OneToOneField(
         Customer, null=True, on_delete=models.CASCADE)
-    book = models.ManyToManyField(Book)
+    #book = models.ManyToManyField(Book)
+    book = models.CharField(max_length=25)
 
     class Meta:
         db_table = "cart"
