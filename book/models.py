@@ -18,6 +18,7 @@ class Book(models.Model):
 
 
 class Customer(models.Model):
+    # delete user -> delete customer
     user = models.OneToOneField(User, null=True, on_delete=models.CASCADE)
     name = models.CharField(max_length=25, null=True)
     phone = models.CharField(max_length=25, null=True)
@@ -25,6 +26,8 @@ class Customer(models.Model):
     date_created = models.DateTimeField(auto_now_add=True, null=True)
 
     class Meta:
+        # by defaul django create tabale name appname_class name
+        # create table name customer
         db_table = "customer"
 
     def __str__(self):
@@ -34,7 +37,7 @@ class Customer(models.Model):
 class Cart(models.Model):
     customer = models.OneToOneField(
         Customer, null=True, on_delete=models.CASCADE)
-    book = models.ManyToManyField(Book)
+    book = models.ManyToManyField(Book)  # create table
 
     class Meta:
         db_table = "cart"
