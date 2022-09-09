@@ -3,12 +3,16 @@ from django.shortcuts import render
 # Create your views here.
 
 
-def login(request):
+def signin(request):
     return render(request, 'book/login.html')
 
 
 def signup(request):
-    return render(request, 'book/register.html')
+    if request.method == 'POST':
+        usermame = request.POST['username']
+        password = request.POST['password']
+    else:
+        return render(request, 'book/register.html')
 
 
 def home(request):
